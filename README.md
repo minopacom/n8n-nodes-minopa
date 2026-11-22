@@ -47,6 +47,17 @@ The node can also be used as a tool by n8n AI agents.
 
 A typical workflow: **HTTP Request** (download an image as a file) → **Minopa: Media → Upload** → **Minopa: Post → Create** with *Media IDs* set to `{{ $json.id }}` and *When* set to *Schedule*.
 
+### Example workflow
+
+[examples/schedule-image-post.json](examples/schedule-image-post.json) downloads an image, uploads it to Minopa and schedules an Instagram post for 9:00 tomorrow. To use it:
+
+1. In n8n, open **Workflows → Import from File** (or paste the JSON onto the canvas).
+2. Select your **Minopa API** credential on both Minopa nodes.
+3. In **Schedule Instagram post**, pick your Instagram account under *Social Account*.
+4. Run the workflow. The post appears as scheduled in your Minopa calendar.
+
+To post somewhere else, pick that account and a matching post type (for example *Text* for an X or LinkedIn text post, which needs no media).
+
 Notes:
 - Each social network has its own required fields. For example TikTok needs a privacy level, YouTube needs a title, a privacy status and "made for kids", and Pinterest needs a board ID. If one is missing, the node returns Minopa's validation message naming the field.
 - Media must be processed before it can be posted; keep *Wait Until Processed* on when uploading.

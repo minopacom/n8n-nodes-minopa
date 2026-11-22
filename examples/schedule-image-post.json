@@ -1,0 +1,61 @@
+{
+  "name": "Minopa: upload an image and schedule an Instagram post",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "When clicking ‘Execute workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0],
+      "id": "a1f0c6b2-0001-4c3a-9a10-000000000001"
+    },
+    {
+      "parameters": {
+        "url": "https://picsum.photos/id/10/1080/1350.jpg",
+        "options": { "response": { "response": { "responseFormat": "file" } } }
+      },
+      "name": "Download image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [220, 0],
+      "id": "a1f0c6b2-0002-4c3a-9a10-000000000002"
+    },
+    {
+      "parameters": {
+        "resource": "media",
+        "operation": "upload",
+        "binaryPropertyName": "data",
+        "uploadOptions": { "fileName": "spring-sale.jpg" }
+      },
+      "name": "Upload to Minopa",
+      "type": "n8n-nodes-minopa.minopa",
+      "typeVersion": 1,
+      "position": [440, 0],
+      "id": "a1f0c6b2-0003-4c3a-9a10-000000000003"
+    },
+    {
+      "parameters": {
+        "resource": "post",
+        "operation": "create",
+        "accountId": "",
+        "postType": "POST",
+        "caption": "Our spring sale starts Friday!",
+        "mediaIds": "={{ $json.id }}",
+        "when": "schedule",
+        "scheduledTime": "={{ $now.plus({ days: 1 }).set({ hour: 9, minute: 0 }).toISO() }}",
+        "additionalFields": { "altText": "Spring sale banner", "tags": "springsale, shopping" }
+      },
+      "name": "Schedule Instagram post",
+      "type": "n8n-nodes-minopa.minopa",
+      "typeVersion": 1,
+      "position": [660, 0],
+      "id": "a1f0c6b2-0004-4c3a-9a10-000000000004"
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": { "main": [[{ "node": "Download image", "type": "main", "index": 0 }]] },
+    "Download image": { "main": [[{ "node": "Upload to Minopa", "type": "main", "index": 0 }]] },
+    "Upload to Minopa": { "main": [[{ "node": "Schedule Instagram post", "type": "main", "index": 0 }]] }
+  },
+  "settings": {}
+}
