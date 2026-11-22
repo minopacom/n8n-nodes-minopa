@@ -1,6 +1,6 @@
 # n8n-nodes-minopa
 
-This is an n8n community node for [Minopa](https://minopa.com). It lets you draft, schedule and publish social media posts to Instagram, TikTok, Threads, Facebook Pages, X, LinkedIn, Pinterest and YouTube from your n8n workflows, upload images and videos to your Minopa media library, and read post analytics.
+This is an n8n community node for [Minopa](https://minopa.com/?utm_source=n8n-node&utm_medium=readme). It lets you draft, schedule and publish social media posts to Instagram, TikTok, Threads, Facebook Pages, X, LinkedIn, Pinterest and YouTube from your n8n workflows, upload images and videos to your Minopa media library, and read post analytics.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/sustainable-use-license/) workflow automation platform.
 
@@ -12,7 +12,7 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 ## Credentials
 
-You need a Minopa account (there is a [free plan](https://minopa.com/en/pricing)) with at least one social account connected, and an API key:
+You need a Minopa account ([sign up free](https://minopa.com/en/signup?utm_source=n8n-node&utm_medium=readme); see [pricing](https://minopa.com/en/pricing?utm_source=n8n-node&utm_medium=readme)) with at least one social account connected, and an API key:
 
 1. In Minopa, open **Settings → API Keys** and create a key. Give it the scopes your workflow needs (for example posts, media and analytics).
 2. In n8n, create a **Minopa API** credential and paste the key. Leave **Base URL** as `https://api.minopa.com`.
@@ -71,7 +71,7 @@ Built and tested with n8n 2.x. The node has no runtime dependencies.
 
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
 - [Minopa API reference](https://developers.minopa.com)
-- [Minopa MCP server and AI agent setup](https://minopa.com/en/mcp)
+- [Minopa MCP server and AI agent setup](https://minopa.com/en/mcp?utm_source=n8n-node&utm_medium=readme)
 - Support: [info@minopa.com](mailto:info@minopa.com)
 
 ## Version history
